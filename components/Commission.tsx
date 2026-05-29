@@ -33,12 +33,22 @@ export default function Commission() {
     setError('')
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!fields.name.trim()) { setError(tr.errorName); return }
     if (!fields.email.includes('@')) { setError(tr.errorEmail); return }
     if (!fields.message.trim()) { setError(tr.errorMessage); return }
-    setSent(true)
+
+    const data = new FormData()
+    data.append('form-name', 'commission')
+    Object.entries(fields).forEach(([k, v]) => data.append(k, v))
+
+    try {
+      await fetch('/', { method: 'POST', body: data })
+      setSent(true)
+    } catch {
+      setError(lang === 'pt' ? 'Erro ao enviar. Tente por email directamente.' : 'Error sending. Please contact us directly by email.')
+    }
   }
 
   const inputClass = "w-full bg-transparent border-b border-bone/25 text-bone placeholder:text-bone/35 font-body font-light text-sm py-3 focus:outline-none focus:border-bronze transition-colors duration-300"

@@ -14,6 +14,17 @@ import Footer from '@/components/Footer'
 export default function Home() {
   return (
     <main>
+      {/* Hidden form for Netlify Forms detection at build time */}
+      <form name="commission" data-netlify="true" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <input type="text" name="knifeType" />
+        <input type="text" name="use" />
+        <input type="text" name="handle" />
+        <textarea name="message" />
+      </form>
+
       <Navigation />
       <Hero />
       <Manifesto />
