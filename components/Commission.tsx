@@ -39,9 +39,18 @@ export default function Commission() {
     if (!fields.email.includes('@')) { setError(tr.errorEmail); return }
     if (!fields.message.trim()) { setError(tr.errorMessage); return }
 
+    const knifeLabel = tr.knifeTypes.find(o => o.value === fields.knifeType)?.label || fields.knifeType
+    const useLabel = tr.useOptions.find(o => o.value === fields.use)?.label || fields.use
+
     const data = new FormData()
     data.append('form-name', 'commission')
-    Object.entries(fields).forEach(([k, v]) => data.append(k, v))
+    data.append('Name', fields.name)
+    data.append('Email', fields.email)
+    data.append('Phone', fields.phone)
+    data.append('Knife Type', knifeLabel)
+    data.append('Intended Use', useLabel)
+    data.append('Handle Preference', fields.handle)
+    data.append('Message', fields.message)
 
     try {
       await fetch('/', { method: 'POST', body: data })
