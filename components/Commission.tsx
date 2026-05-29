@@ -42,23 +42,25 @@ export default function Commission() {
     const knifeLabel = tr.knifeTypes.find(o => o.value === fields.knifeType)?.label || fields.knifeType
     const useLabel = tr.useOptions.find(o => o.value === fields.use)?.label || fields.use
 
-    const subject = encodeURIComponent(
-      `Pepper Knifes Commission - ${knifeLabel || 'Custom'} - ${fields.name}`
-    )
-    const body = encodeURIComponent(
-      `Name: ${fields.name}\n` +
-      `Email: ${fields.email}\n` +
-      `Phone: ${fields.phone || '-'}\n` +
-      `Knife Type: ${knifeLabel || '-'}\n` +
-      `Intended Use: ${useLabel || '-'}\n` +
-      `Handle Preference: ${fields.handle || '-'}\n\n` +
-      `Message:\n${fields.message}`
-    )
-    window.open(
-      `mailto:antonio_17_pimentel@hotmail.com?subject=${subject}&body=${body}`,
-      '_blank'
-    )
-    setSent(true)
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'commission',
+          'Name': fields.name,
+          'Email': fields.email,
+          'Phone': fields.phone,
+          'Knife Type': knifeLabel,
+          'Intended Use': useLabel,
+          'Handle Preference': fields.handle,
+          'Message': fields.message,
+        }).toString(),
+      })
+      setSent(true)
+    } catch {
+      setError(lang === 'pt' ? 'Erro ao enviar. Contacta-nos directamente.' : 'Error sending. Please contact us directly.')
+    }
   }
 
   const inputClass = "w-full bg-transparent border-b border-bone/25 text-bone placeholder:text-bone/35 font-body font-light text-sm py-3 focus:outline-none focus:border-bronze transition-colors duration-300"
