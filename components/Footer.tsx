@@ -71,8 +71,8 @@ export default function Footer() {
             </p>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:edshotful@gmail.com" className="font-body font-light text-bone/45 hover:text-bone text-sm transition-colors duration-300">
-                  edshotful@gmail.com
+                <a href="mailto:antonio_17_pimentel@hotmail.com" className="font-body font-light text-bone/45 hover:text-bone text-sm transition-colors duration-300">
+                  antonio_17_pimentel@hotmail.com
                 </a>
               </li>
               <li>

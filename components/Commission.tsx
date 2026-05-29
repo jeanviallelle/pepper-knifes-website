@@ -95,8 +95,8 @@ export default function Commission() {
               @pepper_knifes
             </a>
             <span className="w-px h-3 bg-steel hidden sm:block" />
-            <a href="mailto:edshotful@gmail.com" className="font-body font-light text-xs text-bone/40 hover:text-bronze transition-colors duration-300">
-              edshotful@gmail.com
+            <a href="mailto:antonio_17_pimentel@hotmail.com" className="font-body font-light text-xs text-bone/40 hover:text-bronze transition-colors duration-300">
+              antonio_17_pimentel@hotmail.com
             </a>
           </div>
         </motion.div>
