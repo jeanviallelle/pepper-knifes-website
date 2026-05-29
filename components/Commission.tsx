@@ -141,6 +141,8 @@ export default function Commission() {
         ) : (
           <motion.form
             onSubmit={handleSubmit}
+            name="commission"
+            data-netlify="true"
             initial={reduce ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -148,6 +150,7 @@ export default function Commission() {
             noValidate
             className="space-y-8"
           >
+            <input type="hidden" name="form-name" value="commission" />
             {/* Row 1: Name + Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div>
