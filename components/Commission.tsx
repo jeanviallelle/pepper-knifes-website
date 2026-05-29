@@ -42,18 +42,21 @@ export default function Commission() {
     const knifeLabel = tr.knifeTypes.find(o => o.value === fields.knifeType)?.label || fields.knifeType
     const useLabel = tr.useOptions.find(o => o.value === fields.use)?.label || fields.use
 
-    const data = new FormData()
-    data.append('form-name', 'commission')
-    data.append('Name', fields.name)
-    data.append('Email', fields.email)
-    data.append('Phone', fields.phone)
-    data.append('Knife Type', knifeLabel)
-    data.append('Intended Use', useLabel)
-    data.append('Handle Preference', fields.handle)
-    data.append('Message', fields.message)
-
     try {
-      await fetch('/', { method: 'POST', body: data })
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'commission',
+          'Name': fields.name,
+          'Email': fields.email,
+          'Phone': fields.phone,
+          'Knife Type': knifeLabel,
+          'Intended Use': useLabel,
+          'Handle Preference': fields.handle,
+          'Message': fields.message,
+        }).toString(),
+      })
       setSent(true)
     } catch {
       setError(lang === 'pt' ? 'Erro ao enviar. Tente por email directamente.' : 'Error sending. Please contact us directly by email.')
