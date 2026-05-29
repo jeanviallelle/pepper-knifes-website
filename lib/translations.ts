@@ -5,8 +5,8 @@ export const t = {
     nav: {
       collection: 'Collection',
       maker: 'The Maker',
-      steel: 'The Steel',
-      commission: 'Commission',
+      steel: 'Materials',
+      commission: 'Order',
     },
     hero: {
       eyebrow: 'Pico Island, Azores',
@@ -138,7 +138,7 @@ export const t = {
     nav: {
       collection: 'Colecção',
       maker: 'O Artesão',
-      steel: 'O Aço',
+      steel: 'Materiais',
       commission: 'Encomendar',
     },
     hero: {
